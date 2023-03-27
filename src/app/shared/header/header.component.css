@@ -1,0 +1,56 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #411649;
+  color: #fff;
+}
+
+header .nav ul li:hover {
+  background-color: rgb(181, 251, 255);
+}
+
+header .nav ul li:hover a {
+  color: black;
+}
+
+header .nav ul li:selected a {
+  color: black;
+}
+
+header .nav ul li:selected{
+  background-color: rgb(181, 251, 255);
+}
+
+.logo img {
+  height: 50px;
+}
+  
+.nav ul{
+  display: flex;
+  list-style: none;
+}
+  
+.nav li {
+  margin-right: 20px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.account {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.account:hover{
+  color: #be29d8;
+}
