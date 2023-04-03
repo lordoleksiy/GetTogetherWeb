@@ -9,6 +9,7 @@
 
 header .nav ul li:hover {
   background-color: rgb(181, 251, 255);
+  cursor: pointer;
 }
 
 header .nav ul li:hover a {
@@ -34,14 +35,14 @@ header .nav ul li:selected{
   
 .nav li {
   margin-right: 20px;
-  min-width: 40px;
+  width: 6vw;
   text-align: center;
 }
 
 .nav a {
   color: #fff;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 8vw*2;
 }
 
 .account {

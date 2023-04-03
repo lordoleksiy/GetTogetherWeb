@@ -1,0 +1,85 @@
+<form [formGroup]="form" class="auth-form">
+    <h2>Sign Up</h2>
+    <div class="form-start">
+        <div class="form-item">
+            <input type="text" 
+            formControlName="name"
+            placeholder="Name">
+            <div class="error" *ngIf="Name.invalid && submitted">
+                <div *ngIf="Name.errors?.['required']">
+                    Name is required
+                </div>
+                <div *ngIf="Name.errors?.['minlength'] || Name.errors?.['maxlength']">
+                    Name length should be between 2 and 30 characters
+                </div>
+            </div>           
+        </div>
+        
+        <div class="form-item">
+            <input type="text" 
+            formControlName="login"          
+            placeholder="Login">
+            <div class="error" *ngIf="Login.invalid && submitted">
+                <div *ngIf="Login.errors?.['required']">
+                    Login is required
+                </div>
+                <div *ngIf="Login.errors?.['minlength'] || Login.errors?.['maxlength']">
+                    Login length should be between 2 and 30 characters
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-item"> 
+            <input type="text" 
+            formControlName="email"
+            placeholder="Email">
+            <div class="error" *ngIf="Email.invalid && submitted">
+                <div *ngIf="Email.errors?.['required']">
+                    Email is required
+                </div>
+                <div *ngIf="Email.errors?.['email']">
+                    Email adress is not correct
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-item">
+            <input type="password" 
+            formControlName="password"
+            placeholder="Password">
+            <div class="error" *ngIf="Password.invalid && submitted">
+                <div *ngIf="Password.errors?.['required']">
+                    Password is required
+                </div>
+                <div *ngIf="Password.errors?.['minlength']">
+                    Password must be longer than 8 symbols
+                </div>
+                <div *ngIf="Password.errors?.['pattern']">
+                    Password must contains of both letters and numbers
+                </div>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <input type="password" 
+            formControlName="confirmPassword"
+            placeholder="Password again">
+            <div class="error" *ngIf="ConfirmPassword.errors?.['required'] && submitted">
+                Confirm password is required
+            </div>
+            <div class="error" *ngIf="form.errors?.['passwordMatch'] && submitted && !ConfirmPassword.errors?.['required']">
+                Password doesn't match
+            </div>
+        </div>
+    </div>
+
+    <div class=".form-end">
+        <button class="form-button" (click)="validationThenSignUp()">Create Account</button>
+        <div id="has-account" class="changeSign">
+            <span>I have an account! </span>
+            <a routerLink="/auth/sign-in">Sign In</a>
+        </div>
+    </div>
+</form>
+
+  

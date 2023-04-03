@@ -6,8 +6,7 @@ import { Component } from '@angular/core';
   template: `
     <app-header></app-header>
     <router-outlet></router-outlet>
-  `,
-})
+  `})
 export class AppComponent {
   title = 'GetTogetherWeb';
 }

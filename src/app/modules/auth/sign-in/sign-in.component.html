@@ -1,0 +1,37 @@
+<form class="auth-form">
+    <h2>Sign In</h2>
+    <div class="form-start">
+        <div class="form-item">
+            <input type="text" 
+                name="Email" 
+                [(ngModel)]="email"
+                placeholder="Email"
+                #Email="ngModel"
+                required>
+            <div class="error" *ngIf="Email.errors?.['required'] && submitted">
+                Email is required
+            </div>
+    </div>
+        
+        <div class="form-item">
+            <input type="password" 
+                name="Password" 
+                [(ngModel)]="password"
+                placeholder="Password"
+                #Password="ngModel"
+                required>
+            <div class="error" *ngIf="Password.errors?.['required'] && submitted">
+                Password is required
+            </div>
+        </div>
+    </div>
+
+    <div class=".form-end">
+        <button class='form-button' (click)="signIn()" mat-button>Sign In</button>
+        <div id="no-account" class="changeSign">
+            <span>Not registered?</span>
+            <a routerLink="/auth/sign-up">Sign up</a>
+        </div>
+    </div>
+</form>
+

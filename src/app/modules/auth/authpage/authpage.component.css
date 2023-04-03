@@ -1,0 +1,100 @@
+.auth-form {
+    width: 400px;
+    margin: auto;
+    margin-top: 7vh;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px #ccc;
+    min-height: 55vh;
+    position: relative;
+}
+
+.form-item{
+    margin-bottom: 20px;
+}
+
+input {
+    width:98%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+  
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+  
+input[type="password"],
+input[type="text"] {
+    font-family: 'Open Sans', sans-serif;
+}
+  
+input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #4CAF50;
+}
+  
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+  
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+button.form-button {
+    width:98%;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+  
+button.form-button:hover {
+    background-color: #0069d9;
+}
+  
+button.form-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.changeSign {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #999;
+}
+  
+.changeSign a {
+    color: #007bff;
+    text-decoration: none;
+}
+  
+.changeSign a:hover {
+    text-decoration: underline;
+}
+h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.form-start{
+    min-height: 45vh;
+}
