@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import {AuthService} from "../../../services/auth.service";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-sign-in',
@@ -7,10 +10,10 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {
-  submitted: boolean = false
   email: string = ''
   password: string = ''
 
+  constructor(private authService: AuthService) {}
 
   form: FormGroup = new FormGroup({
     email: new FormControl(this.email),
@@ -18,7 +21,6 @@ export class SignInComponent {
   })
 
   signIn(){
-    this.submitted = true;
-    console.log(this.password)
+      this.authService.signIn(this.email, this.password);
   }
 }

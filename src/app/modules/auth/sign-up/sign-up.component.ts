@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { INewUser } from 'src/app/models/user/INewUser';
 import { passwordMatchValidator } from './matchpassword';
+import {AuthService} from "../../../services/auth.service";
+import {UserService} from "../../../services/user.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-sign-up',
@@ -11,27 +14,24 @@ import { passwordMatchValidator } from './matchpassword';
 export class SignUpComponent{
 newUser: INewUser = {
   name: '',
-  email: '',
-  login: '',
+  email: ''
 }
 password:string = '';
 
 submitted: boolean = false;
-form!: FormGroup
-
-constructor(private fb: FormBuilder) {
-  this.form = this.fb.group({
+form: FormGroup = new FormGroup({
     name: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]),
     email: new FormControl("", [Validators.required, Validators.email]),
-    login: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
     password: new FormControl("", [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)]),
     confirmPassword: new FormControl("", [Validators.required]),
   },
   {
-    validator: passwordMatchValidator
+    validators: passwordMatchValidator
   });
 
-}
+constructor(private fb: FormBuilder,
+            private authService: AuthService,
+            private userService: UserService) {}
 
   validationThenSignUp() {
     this.submitted = true;
@@ -41,7 +41,15 @@ constructor(private fb: FormBuilder) {
   }
 
   private SignUp(){
+    this.newUser.email = this.Email.value;
+    this.newUser.name = this.Name.value;
+    this.password = this.Password.value;
 
+    this.authService.signUp(this.newUser.email, this.password).then(()=>{
+    this.userService.createUser(this.newUser).subscribe({
+        next: (user) => localStorage.setItem('user', JSON.stringify(user)),
+      })
+    })
   }
 
   get Email(): FormControl {
@@ -50,11 +58,6 @@ constructor(private fb: FormBuilder) {
 
   get Name(): FormControl {
       return this.form.get('name') as FormControl;
-  }
-
-
-  get Login(): FormControl {
-      return this.form.get('login') as FormControl;
   }
 
   get Password(): FormControl {

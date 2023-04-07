@@ -1,34 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthpageComponent } from './authpage/authpage.component';
-import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
+import {AuthRoutingModule} from "./auth-routing.module";
 
 
-const routes:Routes = [
-  { 
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'sign-in'
-  },
-  {
-    path: '',
-    component: AuthpageComponent,
-    children: [
-      {
-        path: 'sign-up',
-        component: SignUpComponent
-      },
-      {
-        path: 'sign-in',
-        component: SignInComponent,
-        pathMatch: 'prefix'
-      }
-    ],
-  },
-]
 @NgModule({
   declarations: [
     AuthpageComponent,
@@ -37,7 +15,7 @@ const routes:Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule
   ]
